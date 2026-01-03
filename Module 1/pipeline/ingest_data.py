@@ -5,7 +5,6 @@ import click
 from sqlalchemy import create_engine
 from tqdm.auto import tqdm
 
-
 dtype = {
     "VendorID": "Int64",
     "passenger_count": "Int64",
@@ -81,6 +80,21 @@ uv run python ingest_data.py \
   --pg-user=root \
   --pg-pass=root \
   --pg-host=localhost \
+  --pg-port=5432 \
+  --pg-db=ny_taxi \
+  --target-table=yellow_taxi_trips \
+  --year=2021 \
+  --month=1 \
+  --chunksize=100000
+  '''
+
+'''
+docker run --rm -it \
+  --network=pipeline_default \
+  taxi_ingest:v001 \
+  --pg-user=root \
+  --pg-pass=root \
+  --pg-host=pgdatabase \
   --pg-port=5432 \
   --pg-db=ny_taxi \
   --target-table=yellow_taxi_trips \
