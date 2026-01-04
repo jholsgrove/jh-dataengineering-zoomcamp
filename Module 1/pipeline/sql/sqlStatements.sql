@@ -16,7 +16,7 @@ WHERE
 	t."DOLocationID" = zdo."LocationID"
 LIMIT 100
 
---USE JOIN
+--USE JOIN (LEFT/RIGHT/OUTER)
 
 select 
 
@@ -33,22 +33,24 @@ from
 		ON t."DOLocationID" = zdo."LocationID"
 LIMIT 100
 
--- LEFT JOIN look for missing DO Location Ids
+-- GROUP/ ORDERBY look for missing DO Location Ids
 
 select 
 
-t.tpep_pickup_datetime,
-t.tpep_dropoff_datetime,
-t.total_amount,
-CONCAT(zpu."Borough", ' / ', zpu."Zone") AS "pick_up_loc",
-CONCAT(zdo."Borough", ' / ', zdo."Zone") AS "drop_off_loc"
+CAST(tpep_dropoff_datetime AS DATE) as "day",
+"DOLocationID",
+COUNT(1) as "count",
+MAX(total_amount) as "Fare",
+MAX(passenger_count) as "Passengers"
 
 from
-	yellow_taxi_trips t JOIN zones zpu 
-		ON t."PULocationID" = zpu."LocationID" 
-	JOIN zones zdo
-		ON t."DOLocationID" = zdo."LocationID"
+	yellow_taxi_trips t 
 
-WHERE
-	"DOLocationID" NOT IN (SELECT "LocationID" from zones)
-LIMIT 100
+GROUP BY
+	1,2
+	--CAST(tpep_dropoff_datetime AS DATE)
+--ORDER BY "Fare" DESC
+
+ORDER BY 
+	"day" ASC,
+	"DOLocationID" ASC;
