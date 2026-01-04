@@ -6,5 +6,6 @@ COPY pyproject.toml .python-version uv.lock ./
 RUN uv sync --locked
 
 COPY ingest_data.py .
+COPY ingest_zones.py .
 
 ENTRYPOINT ["python", "ingest_data.py"]

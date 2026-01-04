@@ -6,10 +6,10 @@ from sqlalchemy import create_engine
 from tqdm.auto import tqdm
 
 dtype = {
-    "LocationID": "BIGINT",
-    "Borough": "VARCHAR(50)",
-    "Zone": "VARCHAR(50)",
-    "service_zone": "VARCHAR(50)"
+    "LocationID": "Int64",
+    "Borough": "string",
+    "Zone": "string",
+    "service_zone": "string"
 }
 
 @click.command()
@@ -20,7 +20,7 @@ dtype = {
 @click.option('--pg-db', default='ny_taxi')
 @click.option('--chunksize', default=100000, type=int)
 @click.option('--target-table', default='zones')
-def run(pg_user, pg_pass, pg_host, pg_port, pg_db, year, month, chunksize, target_table):
+def run(pg_user, pg_pass, pg_host, pg_port, pg_db, chunksize, target_table):
     url = f'https://d37ci6vzurychx.cloudfront.net/misc/taxi_zone_lookup.csv'
 
     engine = create_engine(
