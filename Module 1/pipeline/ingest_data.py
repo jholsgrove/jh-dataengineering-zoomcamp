@@ -101,6 +101,31 @@ def run(pg_user, pg_pass, pg_host, pg_port, pg_db, year, month, chunksize, targe
         print("STDERR:", e.stderr)
         raise
 
+    try:
+        result = subprocess.run([
+            "python", "ingest_green.py",
+            f"--pg-user={pg_user}",
+            f"--pg-pass={pg_pass}",
+            f"--pg-host={pg_host}",
+            f"--pg-port={pg_port}",
+            f"--pg-db={pg_db}",
+            "--target-table=green_taxi_trips",
+            "--chunksize=100000"
+        ], check=True, capture_output=True, text=True)
+        
+        print("STDOUT:", result.stdout)
+        print("STDERR:", result.stderr)
+        print("=" * 50)
+        print("Green taxi data ingestion completed successfully!")
+        print("=" * 50)
+        
+    except subprocess.CalledProcessError as e:
+        print("ERROR: Green taxi ingestion failed!")
+        print("Return code:", e.returncode)
+        print("STDOUT:", e.stdout)
+        print("STDERR:", e.stderr)
+        raise        
+
 if __name__ == '__main__':
     run()
 

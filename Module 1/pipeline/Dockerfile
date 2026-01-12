@@ -7,5 +7,6 @@ RUN uv sync --locked
 
 COPY ingest_data.py .
 COPY ingest_zones.py .
+COPY ingest_green.py .
 
 ENTRYPOINT ["python", "ingest_data.py"]
