@@ -84,3 +84,8 @@ Pipfile.lock
 # Data / generated files
 # =====================
 *.parquet
+
+# =====================
+# JSON Config
+# =====================
+*.json
