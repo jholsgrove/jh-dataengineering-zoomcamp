@@ -41,7 +41,7 @@ parse_dates = [
 @click.option('--chunksize', default=100000, type=int)
 @click.option('--target-table', default='green_taxi_data')
 def run(pg_user, pg_pass, pg_host, pg_port, pg_db, chunksize, target_table):
-    url = 'https://raw.githubusercontent.com/jholsgrove/jh-dataengineering-zoomcamp/main/Module%201/pipeline/green_tripdata_2025-11.csv.gz'
+    url = 'https://raw.githubusercontent.com/jholsgrove/jh-dataengineering-zoomcamp/main/green_tripdata_2025-11.csv.gz'
 
     engine = create_engine(
         f'postgresql://{pg_user}:{pg_pass}@{pg_host}:{pg_port}/{pg_db}'
