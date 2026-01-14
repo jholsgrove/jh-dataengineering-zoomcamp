@@ -10,7 +10,7 @@ variable "project" {
 
 variable "location" {
   description = "Project Location"
-  default = "EU"
+  default = "europe-west2"
 }
 
 variable "bq_dataset_name" {
@@ -25,5 +25,5 @@ variable "gcs_bucket_name" {
 
 variable "gcs_storage_class" {
     description = "Bucket Storage Class"
-    default = "STANDARD"
+    default = "REGIONAL"
 }

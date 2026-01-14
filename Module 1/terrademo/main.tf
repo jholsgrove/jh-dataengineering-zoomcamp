@@ -10,8 +10,8 @@ terraform {
 provider "google" {
   credentials = file(var.credentials)
   project     = var.project
-  region      = "us-central1"
-  zone        = "us-central1-c"
+  region      = "europe-west2"
+  zone        = "europe-west2"
 }
 
 resource "google_storage_bucket" "demo-bucket" {
