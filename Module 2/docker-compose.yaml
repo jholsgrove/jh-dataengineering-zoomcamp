@@ -62,6 +62,11 @@ services:
             username: kestra
             password: k3str4
         kestra:
+          ai:
+            type: "gemini"
+            gemini:
+              api-key: "xxxxxxxx"
+              model-name: gemini-2.5-flash  
           server:
             basicAuth:
               username: "admin@kestra.io" # it must be a valid email address
