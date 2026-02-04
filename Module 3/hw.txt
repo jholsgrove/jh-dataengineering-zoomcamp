@@ -1,0 +1,17 @@
+SELECT COUNT(*) AS total_rows
+FROM `dez-2026.demo_dataset.yellow_tripdata_2024_*`;
+
+Result: 20332093
+
+
+SELECT COUNT(*) AS total_rows
+FROM `dez-2026.demo_dataset.yellow_tripdata_2024_*`
+where fare_amount = 0
+
+Result: 8333
+
+
+SELECT
+  PULocationID,
+  DOLocationID
+FROM `dez-2026.demo_dataset.yellow_tripdata_2024_*`;

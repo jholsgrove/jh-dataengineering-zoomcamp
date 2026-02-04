@@ -65,7 +65,7 @@ services:
           ai:
             type: "gemini"
             gemini:
-              api-key: "xxxxxxxx"
+              api-key: "AIzaSyABQGGOAfon7AbiRqzxCdqOx-wFY6Dzxs4"
               model-name: gemini-2.5-flash  
           server:
             basicAuth:
